@@ -18,4 +18,6 @@ public class ThreadingStates extends Thread {
         thread.join();
         System.out.println(thread.getState());
     }
+
 }
+
