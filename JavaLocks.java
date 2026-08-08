@@ -20,8 +20,7 @@ class BankAccount {
                         // Simulate time taken by processing transaction (holding lock for 3s)
                         Thread.sleep(3000);
                         balance = balance - amount;
-                        System.out.println(Thread.currentThread().getName()
-                                + " Withdrawl complete! Available balance : " + (balance));
+                        System.out.println(Thread.currentThread().getName() + " Withdrawl complete! Available balance : " + (balance));
                     } catch (InterruptedException e) {
                         System.out.println("Inner sleep exception");
                         // Restore the thread's interrupted status so caller layers are aware of the
@@ -40,13 +39,16 @@ class BankAccount {
                 }
             } else {
                 // Executed when lock acquisition times out (takes longer than 1000ms)
-                System.out.println(
-                        Thread.currentThread().getName() + " - Could Not accquire the lock, Try again later! ");
+                System.out.println(Thread.currentThread().getName() + " - Could Not accquire the lock, Try again later! ");
             }
         } catch (Exception e) {
             // Handles InterruptedException thrown specifically by tryLock()
             System.out.println("Outer lock execption");
             Thread.currentThread().interrupt();
+        }
+        if (Thread.currentThread().isInterrupted()) {
+            // benefit of restoring the thread's interrupt status as it alows the developer to handle the exception
+            System.out.println("Handling the interrupt exception");
         }
     }
 }
