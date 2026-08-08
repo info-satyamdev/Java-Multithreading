@@ -1,8 +1,8 @@
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.Lock;
 
-public class UnfairLockExample {
-    private final Lock unfairLock = new ReentrantLock(false);
+public class FairLockExample {
+    private final Lock unfairLock = new ReentrantLock(true);
     public void accessResource(){
         unfairLock.lock();
         try {
