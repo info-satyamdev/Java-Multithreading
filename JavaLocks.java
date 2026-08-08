@@ -52,7 +52,6 @@ class BankAccount {
         }
     }
 }
-
 public class JavaLocks {
     public static void main(String[] args) {
         // Shared resource instance across threads
